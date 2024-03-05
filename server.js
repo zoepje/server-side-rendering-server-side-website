@@ -29,3 +29,16 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+
+/*** Routes & data ***/
+// Maak een GET route voor de index
+app.get('/', function (request, response) {
+  // Haal alle personen uit de WHOIS API op
+  fetchJson().then((apiData) => {
+    // apiData bevat gegevens van alle personen uit alle squads
+    
+    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+    // HTML maken op basis van JSON data
+    response.render('index', {})
+  })
+})
