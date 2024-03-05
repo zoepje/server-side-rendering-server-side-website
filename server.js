@@ -42,3 +42,27 @@ app.get('/', function (request, response) {
     response.render('index', {})
   })
 })
+
+// Maak een GET route voor de catogorie
+app.get('/catogorie', function (request, response) {
+  // Haal alle personen uit de WHOIS API op
+  fetchJson().then((apiData) => {
+    // apiData bevat gegevens van alle personen uit alle squads
+    
+    // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+    // HTML maken op basis van JSON data
+    response.render('catogorie', {})
+  })
+})
+
+// Maak een GET route voor de post
+app.get('/post', function (request, response) {
+  // Haal alle personen uit de WHOIS API op
+  fetchJson().then((apiData) => {
+    // apiData bevat gegevens van alle personen uit alle squads
+    
+    // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+    // HTML maken op basis van JSON data
+    response.render('post', {})
+  })
+})
