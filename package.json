@@ -2,7 +2,7 @@
   "name": "server-side-rendering",
   "version": "1.0.0",
   "description": "Ontwerp en ontwikkel een server-side website voor een opdrachtgever.",
-  "main": "app.js",
+  "main": "server.js",
   "type": "module",
   "directories": {
     "doc": "docs"

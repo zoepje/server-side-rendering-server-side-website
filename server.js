@@ -34,12 +34,12 @@ app.listen(app.get('port'), function () {
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson().then((apiData) => {
-    // apiData bevat gegevens van alle personen uit alle squads
+  fetchJson('https://redpers.nl/wp-json/wp/v2/posts').then((posts) => {
+    // posts bevat gegevens van alle personen uit alle squads
     
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
-    response.render('index', {})
+    response.render('index', {posts: posts})
   })
 })
 
