@@ -5,6 +5,11 @@
   <article>
     <h1><%- post.title.rendered %></h1>
 
+    <!-- Als er een object in media is laat de image zien -->
+    <% if (media[0]) {%>
+      <img src="<%= media[0].link %>" alt="<%= media[0].alt_text %>">
+    <% } %>
+
     <%- post.content.rendered %>
   </article>
 
