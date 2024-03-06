@@ -56,13 +56,13 @@ app.get('/catogorie', function (request, response) {
 })
 
 // Maak een GET route voor de post
-app.get('/post', function (request, response) {
+app.get('/post/:id', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson().then((apiData) => {
+  fetchJson('https://redpers.nl/wp-json/wp/v2/posts/' + request.params.id).then((postData) => {
     // apiData bevat gegevens van alle personen uit alle squads
     
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
-    response.render('post', {})
+    response.render('post', {post: postData})
   })
 })

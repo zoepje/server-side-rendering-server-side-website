@@ -1,6 +1,11 @@
 <%- include('./partials/head') %>
 
-<h1>Post</h1>
 <%- include('./partials/navigation') %>
+
+  <article>
+    <h1><%- post.title.rendered %></h1>
+
+    <%- post.content.rendered %>
+  </article>
 
 <%- include('./partials/foot') %>
