@@ -31,25 +31,23 @@ app.listen(app.get('port'), function () {
 })
 
 /*** Routes & data ***/
+const mediaData = await fetchJson('https://redpers.nl/wp-json/wp/v2/media')
+
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
-  // Haal alle personen uit de WHOIS API op
   fetchJson('https://redpers.nl/wp-json/wp/v2/posts').then((posts) => {
-    // posts bevat gegevens van alle personen uit alle squads
-    
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+
+    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
-    response.render('index', {posts: posts})
+    response.render('index', {posts: posts, media: mediaData})
   })
 })
 
 // Maak een GET route voor de catogorie
 app.get('/catogorie', function (request, response) {
-  // Haal alle personen uit de WHOIS API op
   fetchJson().then((apiData) => {
-    // apiData bevat gegevens van alle personen uit alle squads
     
-    // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+    // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
     response.render('catogorie', {})
   })
@@ -57,12 +55,15 @@ app.get('/catogorie', function (request, response) {
 
 // Maak een GET route voor de post
 app.get('/post/:id', function (request, response) {
-  // Haal alle personen uit de WHOIS API op
   fetchJson('https://redpers.nl/wp-json/wp/v2/posts/' + request.params.id).then((postData) => {
-    // apiData bevat gegevens van alle personen uit alle squads
+  
+    //Filter de mediaData zodat hij alleen maar de media die het zelfde id heeft als featered_media
+    let filterData = mediaData.filter(media => {
+      return media.id == postData.featured_media
+    })
     
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
-    response.render('post', {post: postData})
+    response.render('post', {post: postData, media: filterData})
   })
 })
