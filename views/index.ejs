@@ -5,8 +5,16 @@
 <%- include('./partials/navigation') %>
 
 
-<% posts.forEach(post => { %>
+<% posts.forEach(function(post) { %>
   <article>
+    <!-- Ga door deze loop totdat je door de hele media lijst bent gegaan -->
+    <% for(var i=0; i<media.length; i++) {%>
+      <!-- Als de featured_media (id) het zelfde is als media.id van de zoveelste in de lijst
+      Maak een img aan met als src media.link en alt media.alt_text-->
+      <% if (post.featured_media == media[i].id) {%>
+          <img src="<%= media[i].link %>" alt="<%= media[i].alt_text %>">
+      <% } %>
+    <% } %>
     <a href="./post/<%= post.id %>">
       <h2><%- post.title.rendered %></h2>
     </a>
