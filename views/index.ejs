@@ -2,18 +2,19 @@
 
 <h1>Red Pers</h1>
 
-<nav>
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="./catogorie">Catogorie</a>
-    </li>
-    <li>
-      <a href="./post">Post</a>
-    </li>
-  </ul>
-</nav>
+<%- include('./partials/navigation') %>
+
+
+<% posts.forEach(post => { %>
+  <article>
+    <a href="./post/<%= post.id %>">
+      <h2><%- post.title.rendered %></h2>
+    </a>
+  </article>
+<% }) %>  
+
+
+  
+
 
 <%- include('./partials/foot') %>
