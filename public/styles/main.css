@@ -4,3 +4,75 @@
   margin: 0;
   padding: 0;
 }
+
+:root{
+  --thumbnail-width: 100%;
+  --thumbnail-height: 200px;
+
+  --border: solid black 1px;
+}
+
+body{
+  margin: 1rem;
+
+  & a{
+    text-decoration: none;
+    color: black;
+  }
+
+  & a:hover{
+    text-decoration: underline;
+  }
+}
+
+main{
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.frontpage-card{
+  margin: 1rem;
+  border: var(--border);
+  max-width: 400px;
+
+  & img{
+    width: var(--thumbnail-width);
+    height: var(--thumbnail-height);
+    object-fit: cover;
+    object-position: center;
+    border-bottom: var(--border);
+  }
+
+  & h2{
+    padding-bottom: 3em;
+  }
+
+  & .bottom-tag{
+    display: flex;
+    justify-content: space-between;
+    border-top: var(--border);
+  }
+}
+
+footer{
+  display: flex;
+  margin-left: 3rem;
+
+  & ul{
+    list-style: none;
+
+    & li{
+      padding: 2px 0;
+    }
+  }
+
+  & section{
+    margin-top: 2rem;
+  }
+
+  & h4{
+    margin: 1rem 0;
+  }
+}
