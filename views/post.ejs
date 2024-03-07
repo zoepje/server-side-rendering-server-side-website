@@ -1,7 +1,12 @@
 <%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/post.css">
 
+<title><%- post.title.rendered %></title>
+</head>
+
+<body> 
 <%- include('./partials/navigation') %>
-
+<main>
   <article>
     <h1><%- post.title.rendered %></h1>
 
@@ -10,7 +15,17 @@
       <img src="<%= media[0].link %>" alt="<%= media[0].alt_text %>">
     <% } %>
 
-    <%- post.content.rendered %>
+    <div class="excerpt">
+      <a href=""><%= post.categories %></a>
+      <span><%- post.date_gmt %></span>
+      <%- post.excerpt.rendered %>
+    </div>
+
+    <section class="content">
+      <%- post.content.rendered %>
+    </section>
   </article>
+</main>
+
 
 <%- include('./partials/foot') %>

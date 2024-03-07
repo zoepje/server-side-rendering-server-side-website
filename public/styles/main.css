@@ -23,36 +23,11 @@ body{
   & a:hover{
     text-decoration: underline;
   }
-}
 
-main{
-  margin: 0 auto;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-}
-
-.frontpage-card{
-  margin: 1rem;
-  border: var(--border);
-  max-width: 400px;
-
-  & img{
-    width: var(--thumbnail-width);
-    height: var(--thumbnail-height);
-    object-fit: cover;
-    object-position: center;
-    border-bottom: var(--border);
-  }
-
-  & h2{
-    padding-bottom: 3em;
-  }
-
-  & .bottom-tag{
-    display: flex;
-    justify-content: space-between;
-    border-top: var(--border);
+  & p {
+    max-width: 30em;
+    line-height: 30px;
+    margin-bottom: 13px;
   }
 }
 
