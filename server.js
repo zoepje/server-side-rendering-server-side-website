@@ -33,13 +33,13 @@ app.listen(app.get('port'), function () {
 /*** Routes & data ***/
 const mediaData = await fetchJson('https://redpers.nl/wp-json/wp/v2/media')
 
-// Maak een GET route voor de index
+// Maak een GET route voor de voorpagina
 app.get('/', function (request, response) {
   fetchJson('https://redpers.nl/wp-json/wp/v2/posts').then((posts) => {
 
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele
+    // Render voorpagina.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
-    response.render('index', {posts: posts, media: mediaData})
+    response.render('voorpagina', {posts: posts, media: mediaData})
   })
 })
 
