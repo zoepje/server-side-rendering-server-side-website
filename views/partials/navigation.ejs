@@ -3,8 +3,10 @@
     <li>
       <a href="/">Voorpagina</a>
     </li>
+  <% categories.forEach(function(categorie) { %>
     <li>
-      <a href="/catogorie">Catogorie</a>
+      <a href="/categorie/<%= categorie.slug %>"> <%= categorie.name %></a>
     </li>
+  <% }) %>  
   </ul>
 </nav>
