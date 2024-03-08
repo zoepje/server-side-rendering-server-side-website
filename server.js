@@ -56,7 +56,6 @@ app.get('/', function (request, response) {
 // Maak een GET route voor de catogorie
 app.get('/categorie/:slug', function (request, response) {
   fetchJson('https://redpers.nl/wp-json/wp/v2/categories/?slug=' + request.params.slug).then((apiData) => {
-    console.log(apiData)
     // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
     response.render('categorie', {categorie: apiData, categories: categoriesData})
@@ -66,7 +65,6 @@ app.get('/categorie/:slug', function (request, response) {
 // Maak een GET route voor de post
 app.get('/post/:slug', function (request, response) {
   fetchJson('https://redpers.nl/wp-json/wp/v2/posts/?slug=' + request.params.slug).then((postData) => {
-    console.log(postData)
     //Filter de mediaData zodat hij alleen maar de media die het zelfde id heeft als featered_media
     let filterData = mediaData.filter(media => {
       return media.id == postData[0].featured_media
