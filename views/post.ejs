@@ -1,14 +1,13 @@
 <%- include('./partials/head') %>
 <link rel="stylesheet" href="/styles/post.css">
-
-<title><%- post.title.rendered %></title>
+<%- post.yoast_head %>
 </head>
 
 <body> 
 <%- include('./partials/navigation') %>
 <main>
   <article>
-    <h1><%- post.title.rendered %></h1>
+    <h1><%- post[0].title.rendered %></h1>
 
     <!-- Als er een object in media is laat de image zien -->
     <% if (media[0]) {%>
@@ -16,13 +15,13 @@
     <% } %>
 
     <div class="excerpt">
-      <a href=""><%= post.categories %></a>
-      <span><%- post.date_gmt %></span>
-      <%- post.excerpt.rendered %>
+      <a href=""><%= post[0].categories %></a>
+      <span><%- post[0].date_gmt %></span>
+      <%- post[0].excerpt.rendered %>
     </div>
 
     <section class="content">
-      <%- post.content.rendered %>
+      <%- post[0].content.rendered %>
     </section>
   </article>
 </main>
