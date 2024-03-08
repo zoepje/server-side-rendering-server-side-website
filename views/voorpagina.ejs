@@ -4,6 +4,7 @@
 <title>Red Pers</title>
 </head>
 
+<body>
 <h1>Red Pers</h1>
 
 <%- include('./partials/navigation') %>
@@ -11,15 +12,8 @@
 <main>
   <% posts.forEach(function(post) { %>
     <article class="frontpage-card">
-      <!-- Ga door deze loop totdat je door de hele media lijst bent gegaan -->
-      <% for(var i=0; i<media.length; i++) {%>
-        <!-- Als de featured_media (id) het zelfde is als media.id van de zoveelste in de lijst
-        Maak een img aan met als src media.link en alt media.alt_text-->
-        <% if (post.featured_media == media[i].id) {%>
-            <img src="<%= media[i].link %>" alt="<%= media[i].alt_text %>">
-        <% } %>
-      <% } %>
-      <a href="./post/<%= post.id %>">
+      <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+      <a href="./post/<%= post.slug %>">
         <h2><%- post.title.rendered %></h2>
       </a>
       
