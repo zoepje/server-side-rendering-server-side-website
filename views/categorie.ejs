@@ -5,6 +5,18 @@
 
 <body>
 <%- include('./partials/navigation') %>
-<h1><%= categorie[0].name %></h1>
+<h1><%- categorie[0].name %></h1>
+
+<% posts.forEach(function(post) { %>
+  <a href="/post/<%= post.slug %>">
+    <article class="categorie-card">
+      <p class="date"><%- post.date %></p>
+
+      <h2><%- post.title.rendered %></h2>
+      
+      <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+    </article>
+  </a> 
+<% }) %>  
 
 <%- include('./partials/foot') %>
