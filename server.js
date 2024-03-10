@@ -31,7 +31,10 @@ app.listen(app.get('port'), function () {
 })
 
 /*** Routes & data ***/
-const mediaData = await fetchJson('https://redpers.nl/wp-json/wp/v2/media')
+const apiUrl = 'https://redpers.nl/wp-json/wp/v2/'
+const postsUrl = apiUrl + 'posts'
+const categoriesUrl = apiUrl+ 'categories'
+// const usersUrl = apiUrl + 'users'
 const categoriesData = [
   {"id": 9, "name": "Binnenland", "slug": "binnenland"},
   {"id": 1010, "name": "Buitenland", "slug": "buitenland"}, 
@@ -45,33 +48,34 @@ const categoriesData = [
 
 // Maak een GET route voor de voorpagina
 app.get('/', function (request, response) {
-  fetchJson('https://redpers.nl/wp-json/wp/v2/posts').then((posts) => {
+  fetchJson(postsUrl + '?per_page=100').then((posts) => {
 
     // Render voorpagina.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
-    response.render('voorpagina', {posts: posts, media: mediaData, categories: categoriesData})
+    response.render('voorpagina', {posts: posts, categories: categoriesData})
   })
 })
 
 // Maak een GET route voor de catogorie
 app.get('/categorie/:slug', function (request, response) {
-  fetchJson('https://redpers.nl/wp-json/wp/v2/categories/?slug=' + request.params.slug).then((apiData) => {
+  Promise.all([fetchJson(categoriesUrl + '/?slug=' + request.params.slug), fetchJson(postsUrl + '?per_page=100')]).then(([categorieData, postData]) => {
     // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
-    response.render('categorie', {categorie: apiData, categories: categoriesData})
+    
+    //Filter de postData zodat hij alleen maar de posts die het zelfde id hebben als deze categorie
+    let filterData = postData.filter(post => {
+      return post.categories == categorieData[0].id
+    })
+    response.render('categorie', {categorie: categorieData, categories: categoriesData, posts: filterData})
   })
 })
 
 // Maak een GET route voor de post
 app.get('/post/:slug', function (request, response) {
-  fetchJson('https://redpers.nl/wp-json/wp/v2/posts/?slug=' + request.params.slug).then((postData) => {
-    //Filter de mediaData zodat hij alleen maar de media die het zelfde id heeft als featered_media
-    let filterData = mediaData.filter(media => {
-      return media.id == postData[0].featured_media
-    })
+  fetchJson(postsUrl + '?slug=' + request.params.slug).then((postData) => {
     
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
-    response.render('post', {post: postData, media: filterData, categories: categoriesData})
+    response.render('post', {post: postData, categories: categoriesData})
   })
 })
