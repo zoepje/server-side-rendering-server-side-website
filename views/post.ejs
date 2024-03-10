@@ -9,10 +9,7 @@
   <article>
     <h1><%- post[0].title.rendered %></h1>
 
-    <!-- Als er een object in media is laat de image zien -->
-    <% if (media[0]) {%>
-      <img src="<%= media[0].link %>" alt="<%= media[0].alt_text %>">
-    <% } %>
+    <img src="<%= post[0].jetpack_featured_media_url  %>" alt="">
 
     <div class="excerpt">
       <a href=""><%= post[0].categories %></a>
