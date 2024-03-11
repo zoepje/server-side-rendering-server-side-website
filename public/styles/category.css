@@ -13,6 +13,8 @@ h1{
 
     & img{
       width: 100%;
+      height: var(--thumbnail-height);
+      object-fit: cover;
       border: var(--border);
     }
   }

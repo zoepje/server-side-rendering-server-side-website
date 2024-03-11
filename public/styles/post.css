@@ -26,11 +26,29 @@ article{
 
   & .content{
     & h4, p{
-    font-size: 1.25rem;
+      font-size: 1.25rem;
     }
 
     & img[style]{
       width: 85vw !important;
+    }
+
+    & blockquote{
+      padding: 20px;
+
+      & cite{
+        font-size: 2rem;
+      }
+    }
+
+    & blockquote::before{
+      content: "‘’";
+      display: block;
+      color: #e85340;
+      font-size: 100px;
+      letter-spacing: -15px;
+      margin-bottom: -60px;
+      margin-left: -6px;
     }
 
     & ul{
