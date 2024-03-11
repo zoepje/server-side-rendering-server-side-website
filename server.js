@@ -57,10 +57,10 @@ app.get('/', function (request, response) {
   })
 })
 
-// Maak een GET route voor de catogorie
+// Maak een GET route voor de category
 app.get('/categorie/:slug', function (request, response) {
   Promise.all([fetchJson(categoriesUrl + '/?slug=' + request.params.slug), fetchJson(postsUrl + '?per_page=100')]).then(([categoryData, postData]) => {
-    // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
+    // Render category.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
     
     //Filter de postData zodat hij alleen maar de posts die het zelfde id hebben als deze category
