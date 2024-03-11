@@ -5,6 +5,10 @@ main{
   justify-content: space-between;
 }
 
+h1{
+  text-align: center;
+}
+
 .frontpage-card{
   margin: 1rem;
   border: var(--border);

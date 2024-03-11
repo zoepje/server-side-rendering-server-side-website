@@ -19,16 +19,22 @@ article{
   }
 
   & .excerpt{
-    /* display: flex; */
-
     & p{
       font-size: 1.5rem;
     }
   }
 
   & .content{
-    & p{
+    & h4, p{
     font-size: 1.25rem;
+    }
+
+    & img[style]{
+      width: 85vw !important;
+    }
+
+    & ul{
+      padding: revert;
     }
   }
 }

@@ -1,0 +1,19 @@
+h1{
+  text-align: center;
+}
+
+.results{
+  background-color: #ffffff;
+  border: var(--border);
+  padding: 30px;
+
+  & article{
+    border-bottom: var(--border-light);
+    padding: 10px 0;
+
+    & img{
+      width: 100%;
+      border: var(--border);
+    }
+  }
+}
