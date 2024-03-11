@@ -47,27 +47,27 @@ const categoriesData = [
   {"id": 94, "name": "Wetenshap", "slug": "wetenschap"},
  ]
 
-// Maak een GET route voor de voorpagina
+// Maak een GET route voor de home
 app.get('/', function (request, response) {
   fetchJson(postsUrl + '?per_page=100').then((posts) => {
 
-    // Render voorpagina.ejs uit de views map en geef de opgehaalde data mee als variabele
+    // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
-    response.render('voorpagina', {posts: posts, categories: categoriesData})
+    response.render('home', {posts: posts, categories: categoriesData})
   })
 })
 
 // Maak een GET route voor de catogorie
 app.get('/categorie/:slug', function (request, response) {
-  Promise.all([fetchJson(categoriesUrl + '/?slug=' + request.params.slug), fetchJson(postsUrl + '?per_page=100')]).then(([categorieData, postData]) => {
+  Promise.all([fetchJson(categoriesUrl + '/?slug=' + request.params.slug), fetchJson(postsUrl + '?per_page=100')]).then(([categoryData, postData]) => {
     // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
     
-    //Filter de postData zodat hij alleen maar de posts die het zelfde id hebben als deze categorie
+    //Filter de postData zodat hij alleen maar de posts die het zelfde id hebben als deze category
     let filterData = postData.filter(post => {
-      return post.categories == categorieData[0].id
+      return post.categories == categoryData[0].id
     })
-    response.render('categorie', {categorie: categorieData, categories: categoriesData, posts: filterData})
+    response.render('category', {category: categoryData, categories: categoriesData, posts: filterData})
   })
 })
 
@@ -78,7 +78,7 @@ app.get('/post/:slug', function (request, response) {
     // HTML maken op basis van JSON data
 
     let filterData = mediaData.filter(media => {
-      return media.id == post[0].featured_media
+      return media.id == postData[0].featured_media
     })
     response.render('post', {post: postData, media: filterData, categories: categoriesData})
   })

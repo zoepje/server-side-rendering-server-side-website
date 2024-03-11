@@ -3,30 +3,11 @@
         <section class="rubieken">
           <h4>Rubieken</h4>
           <ul>
-            <li>
-              <a href="">Binnenland</a>
-            </li>
-            <li>
-              <a href="">Buitenland</a>
-            </li>
-            <li>
-              <a href="">Politiek</a>
-            </li>
-            <li>
-              <a href="">Economie</a>
-            </li>
-            <li>
-              <a href="">Wetenschap</a>
-            </li>
-            <li>
-              <a href="">Columns</a>
-            </li>
-            <li>
-              <a href="">Podcast</a>
-            </li>
-            <li>
-              <a href="">Kunst & Media</a>
-            </li>
+            <% categories.forEach(function(category) { %>
+              <li>
+                <a href="/categorie/<%= category.slug %>"> <%= category.name %></a>
+              </li>
+            <% }) %> 
           </ul>
         </section>
 
@@ -34,7 +15,7 @@
           <h4>Navigeer</h4>
           <ul>
             <li>
-              <a href="">Voorpagina</a>
+              <a href="/">Voorpagina</a>
             </li>
             <li>
               <a href="">Voor Alumni</a>
