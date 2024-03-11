@@ -1,22 +1,25 @@
 <%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/category.css">
 
 <%- category[0].yoast_head %>
 </head>
 
 <body>
 <%- include('./partials/navigation') %>
-<h1><%- category[0].name %></h1>
+<h1>Meer van: <%- category[0].name %></h1>
 
-<% posts.forEach(function(post) { %>
-  <a href="/post/<%= post.slug %>">
-    <article class="category-card">
-      <p class="date"><%- post.date %></p>
-
-      <h2><%- post.title.rendered %></h2>
-      
-      <img src="<%= post.jetpack_featured_media_url  %>" alt="">
-    </article>
-  </a> 
-<% }) %>  
+<div class="results">
+  <% posts.forEach(function(post) { %>
+    <a href="/post/<%= post.slug %>">
+      <article class="category-card">
+        <p class="date"><%- post.date %></p>
+  
+        <h2><%- post.title.rendered %></h2>
+        
+        <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+      </article>
+    </a> 
+  <% }) %>  
+</div>
 
 <%- include('./partials/foot') %>
