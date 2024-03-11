@@ -24,7 +24,7 @@ body{
     text-decoration: underline;
   }
 
-  & p {
+  & p{
     max-width: 30em;
     line-height: 30px;
     margin-bottom: 13px;
@@ -32,7 +32,15 @@ body{
 }
 
 nav{
+  border-top: var(--border);
+  border-bottom: var(--border);
 
+  & ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 footer{
