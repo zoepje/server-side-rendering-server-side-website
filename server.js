@@ -33,7 +33,8 @@ app.listen(app.get('port'), function () {
 /*** Routes & data ***/
 const apiUrl = 'https://redpers.nl/wp-json/wp/v2/'
 const postsUrl = apiUrl + 'posts'
-const categoriesUrl = apiUrl+ 'categories'
+const categoriesUrl = apiUrl + 'categories'
+const mediaUrl = apiUrl + 'media'
 // const usersUrl = apiUrl + 'users'
 const categoriesData = [
   {"id": 9, "name": "Binnenland", "slug": "binnenland"},
@@ -72,10 +73,13 @@ app.get('/categorie/:slug', function (request, response) {
 
 // Maak een GET route voor de post
 app.get('/post/:slug', function (request, response) {
-  fetchJson(postsUrl + '?slug=' + request.params.slug).then((postData) => {
-    
+  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug), fetchJson(mediaUrl + '?per_page=100')]).then(([postData, mediaData]) => {
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
-    response.render('post', {post: postData, categories: categoriesData})
+
+    let filterData = mediaData.filter(media => {
+      return media.id == post[0].featured_media
+    })
+    response.render('post', {post: postData, media: filterData, categories: categoriesData})
   })
 })
