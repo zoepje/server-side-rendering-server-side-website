@@ -19,7 +19,7 @@ main{
   }
 
   & h2{
-    padding-bottom: 3em;
+    padding: 0 .5em 3em;
   }
 
   & .bottom-tag{
