@@ -49,7 +49,7 @@ const categoriesData = [
 
 // Maak een GET route voor de home
 app.get('/', function (request, response) {
-  fetchJson(postsUrl + '?per_page=100').then((posts) => {
+  fetchJson(postsUrl + '?per_page=30').then((posts) => {
 
     // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
@@ -73,7 +73,7 @@ app.get('/categorie/:slug', function (request, response) {
 
 // Maak een GET route voor de post
 app.get('/post/:slug', function (request, response) {
-  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug), fetchJson(mediaUrl + '?per_page=100')]).then(([postData, mediaData]) => {
+  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug), fetchJson(mediaUrl + '?per_page=30')]).then(([postData, mediaData]) => {
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
 
