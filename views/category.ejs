@@ -11,17 +11,21 @@
   <h2>Meer van: <%- category[0].name %></h2>
 
   <div class="results">
-    <% posts.forEach(function(post) { %>
-      <a href="/post/<%= post.slug %>">
-        <article class="category-card">
-          <p class="date"><%- post.date %></p>
-    
-          <h3><%- post.title.rendered %></h3>
-          
-          <img src="<%= post.jetpack_featured_media_url  %>" alt="">
-        </article>
-      </a> 
-    <% }) %>  
+    <% if (posts[0]) { %>
+      <% posts.forEach(function(post) { %>
+        <a href="/post/<%= post.slug %>">
+          <article class="category-card">
+            <p class="date"><%- post.date %></p>
+      
+            <h3><%- post.title.rendered %></h3>
+            
+            <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+          </article>
+        </a> 
+      <% }) %>  
+    <% } else {%>
+      <h3> Er zijn geen artiekelen</h3>
+    <% } %>
   </div>
 </main>
 
