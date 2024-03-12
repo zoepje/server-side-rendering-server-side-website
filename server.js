@@ -110,12 +110,12 @@ app.get('/post/:slug', function (request, response) {
       options = {month: "long"},
       month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
       year = parsedDate.getFullYear(),
-      hours = parsedDate.getHours(),
-      minutes = parsedDate.getMinutes(),
+      hours = (parsedDate.getHours() < 10 ? '0' : ' ') + parsedDate.getHours(),
+      minutes = (parsedDate.getMinutes() < 10 ? '0' : '') + parsedDate.getMinutes(),
       time = hours + ':' + minutes,
       newDate = day + ' ' + month + ' ' + year + ' ' + time;
     postData[0].date = newDate
-
+    
     response.render('post', {post: postData, media: filterData, categories: categoriesData})
   })
 })
