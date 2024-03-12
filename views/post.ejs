@@ -1,10 +1,10 @@
 <%- include('./partials/head') %>
 <link rel="stylesheet" href="/styles/post.css">
-<%- post.yoast_head %>
+<%- post[0].yoast_head %>
 </head>
 
 <body> 
-<%- include('./partials/navigation') %>
+<%- include('./partials/header') %>
 <main>
   <article>
     <h1><%- post[0].title.rendered %></h1>
@@ -18,6 +18,11 @@
     </div>
 
     <section class="content">
+      <div class="info">
+        <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
+        <p>Leestijd: <strong><%= post[0].yoast_head_json.time %> min</strong></p>
+      </div>
+
       <%- post[0].content.rendered %>
     </section>
   </article>

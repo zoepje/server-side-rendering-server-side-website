@@ -9,12 +9,18 @@
   --thumbnail-width: 100%;
   --thumbnail-height: 200px;
 
+  --max-width: 1200px;
   --border: solid #000000 1px;
   --border-light: solid #adadad 1px;
+
+  --margin-center: 0 auto;
+  --line-length: 30em;
+  --line-heigth: 1.5;
 }
 
+/* #region Basics */
 body{
-  margin: 1rem;
+  margin: 1rem 0;
 
   & a{
     text-decoration: none;
@@ -26,24 +32,63 @@ body{
   }
 
   & p{
-    max-width: 30em;
-    line-height: 30px;
-    margin-bottom: 13px;
+    max-width: var(--line-length);
+    line-height: var(--line-heigth);
+    padding-bottom: 13px;
   }
 }
 
-nav{
-  border-top: var(--border);
-  border-bottom: var(--border);
+h1{
+  text-align: center;
+}
+/* #endregion Basics */
 
-  & ul{
-    list-style: none;
+/* #region Header */
+header{
+  & .service-top{
+    display: none;
+  }
+
+  & span{
+    font-size: 0.75rem;
+  }
+
+  & .top-bar{
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+
+    & .menu-button{
+      display: grid;
+      border: 0;
+      background: transparent;
+    }
+
+    & .search{
+      display: grid;
+    }
+  }
+
+  & nav{
+    display: none;
+
+    & .search{
+      display: none;
+    }
   }
 }
+/* #endregion Header */
 
+/* #region main */
+main{
+  max-width: var(--max-width);
+  margin: var(--margin-center);
+}
+/* #endregion Main */
+
+/* #region Footer */
 footer{
   display: flex;
   margin-left: 3rem;
@@ -64,3 +109,66 @@ footer{
     margin: 1rem 0;
   }
 }
+/* #endregion Footer */
+
+/* #region Mediaqueries */
+@media only screen and (min-width: 750px){
+  header{
+    position: relative;
+    width: 100vw;
+    top: -1rem;
+
+    & .service-top{
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      background-color: #000000;
+      color: #ffffff;
+
+      & li{
+        width: fit-content;
+        padding: 0 10px;
+        list-style: none;
+
+        & a{
+          color: #ffffff;
+        }
+      }
+    }
+
+    & .top-bar{
+      display: block;
+
+      & .menu-button,
+      .search{
+        display: none;
+      }
+    }
+
+    & nav{
+      border-top: var(--border);
+      border-bottom: var(--border);
+      display: block;
+      max-width: var(--max-width);
+      margin: var(--margin-center);
+
+      & .search{
+        display: grid;
+      }
+
+      & .categories{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+      }
+
+      & .service{
+        display: none;
+      }
+    }
+  }
+}
+/* #endregion Mediaqueries */

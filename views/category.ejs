@@ -5,21 +5,24 @@
 </head>
 
 <body>
-<%- include('./partials/navigation') %>
-<h1>Meer van: <%- category[0].name %></h1>
+<%- include('./partials/header') %>
 
-<div class="results">
-  <% posts.forEach(function(post) { %>
-    <a href="/post/<%= post.slug %>">
-      <article class="category-card">
-        <p class="date"><%- post.date %></p>
-  
-        <h2><%- post.title.rendered %></h2>
-        
-        <img src="<%= post.jetpack_featured_media_url  %>" alt="">
-      </article>
-    </a> 
-  <% }) %>  
-</div>
+<main>
+  <h2>Meer van: <%- category[0].name %></h2>
+
+  <div class="results">
+    <% posts.forEach(function(post) { %>
+      <a href="/post/<%= post.slug %>">
+        <article class="category-card">
+          <p class="date"><%- post.date %></p>
+    
+          <h3><%- post.title.rendered %></h3>
+          
+          <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+        </article>
+      </a> 
+    <% }) %>  
+  </div>
+</main>
 
 <%- include('./partials/foot') %>

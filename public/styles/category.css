@@ -1,4 +1,4 @@
-h1{
+h2{
   text-align: center;
 }
 
@@ -12,7 +12,7 @@ h1{
     padding: 10px 0;
 
     & img{
-      width: 100%;
+      width: var(--thumbnail-width);
       height: var(--thumbnail-height);
       object-fit: cover;
       border: var(--border);

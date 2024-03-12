@@ -1,12 +1,8 @@
 main{
-  margin: 0 auto;
+  margin: var(--margin-center);
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-}
-
-h1{
-  text-align: center;
 }
 
 .frontpage-card{

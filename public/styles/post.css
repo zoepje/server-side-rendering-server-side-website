@@ -1,14 +1,14 @@
 main{
- margin: 1rem; 
+ margin: 2rem; 
 }
 
 article{
   max-width: 800px;
-  margin: 0 auto;
+  margin: var(--margin-center);
 
   & h1{
-    text-align: center;
     font-size: 2.2rem;
+    max-width: var(--line-length);
   }
 
   & img{
@@ -25,8 +25,29 @@ article{
   }
 
   & .content{
+    width: fit-content;
+    margin: var(--margin-center);
+
+    & .info{
+      border-top: var(--border);
+      margin-bottom: 1rem;
+
+      & p{
+        border-bottom: var(--border);
+        text-transform: uppercase;
+        padding: 0;
+      }
+    }
+
     & h4, p{
       font-size: 1.25rem;
+      max-width: var(--line-length);
+      line-height: var(--line-heigth);
+    }
+
+    & figcaption{
+      max-width: var(--line-length);
+      line-height: var(--line-heigth);
     }
 
     & img[style]{
@@ -38,6 +59,7 @@ article{
 
       & cite{
         font-size: 2rem;
+        line-height: var(--line-heigth);
       }
     }
 
