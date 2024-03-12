@@ -51,6 +51,16 @@ const categoriesData = [
 app.get('/', function (request, response) {
   fetchJson(postsUrl + '?per_page=30').then((posts) => {
 
+    // Voor alle posts
+    // Zet de string data uit API om naar een datum die er mooi uit ziet
+    for (var i=0; i < posts.length; i++) {
+      const parsedDate = new Date(posts[i].date),
+            day = parsedDate.getDate(),
+            options = {month: "short"},
+            month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
+            newDate = day + ' ' + month;
+      posts[i].date = newDate
+    }
     // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
     response.render('home', {posts: posts, categories: categoriesData})
@@ -67,6 +77,19 @@ app.get('/categorie/:slug', function (request, response) {
     let filterData = postData.filter(post => {
       return post.categories == categoryData[0].id
     })
+
+    // Voor alle posts die in filterData zitten
+    // Zet de string data uit API om naar een datum die er mooi uit ziet
+    for (var i=0; i < filterData.length; i++) {
+      const parsedDate = new Date(filterData[i].date),
+            day = parsedDate.getDate(),
+            options = {month: "long"},
+            month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
+            year = parsedDate.getFullYear(),
+            newDate = day + ' ' + month + ' ' + year;
+      filterData[i].date = newDate
+    }
+
     response.render('category', {category: categoryData, categories: categoriesData, posts: filterData})
   })
 })
@@ -80,6 +103,19 @@ app.get('/post/:slug', function (request, response) {
     let filterData = mediaData.filter(media => {
       return media.id == postData[0].featured_media
     })
+
+    // Zet de string data uit API om naar een datum die er mooi uit ziet
+    const parsedDate = new Date(postData[0].date),
+      day = parsedDate.getDate(),
+      options = {month: "long"},
+      month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
+      year = parsedDate.getFullYear(),
+      hours = parsedDate.getHours(),
+      minutes = parsedDate.getMinutes(),
+      time = hours + ':' + minutes,
+      newDate = day + ' ' + month + ' ' + year + ' ' + time;
+    postData[0].date = newDate
+
     response.render('post', {post: postData, media: filterData, categories: categoriesData})
   })
 })
