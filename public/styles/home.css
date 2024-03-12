@@ -19,12 +19,14 @@ main{
   }
 
   & h2{
-    padding: 0 .5em 3em;
+    padding: 0 var(--padding);
+    height: var(--thumbnail-height);
   }
 
   & .bottom-tag{
     display: flex;
     justify-content: space-between;
     border-top: var(--border);
+    padding: 0 var(--padding);
   }
 }
