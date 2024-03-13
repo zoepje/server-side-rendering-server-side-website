@@ -5,7 +5,9 @@ h2{
 .results{
   background-color: #ffffff;
   border: var(--border);
+  margin: var(--margin-center);
   padding: 30px;
+  max-width: 900px;
 
   & article{
     border-bottom: var(--border-light);
@@ -16,6 +18,28 @@ h2{
       height: var(--thumbnail-height);
       object-fit: cover;
       border: var(--border);
+    }
+  }
+}
+
+@media only screen and (min-width: 700px){
+  .results{
+    & article{
+      display: flex;
+      
+      & p{
+        width: 25%;
+      }
+
+      & h3{
+        width: 50%;
+        padding: 0 var(--padding);
+      }
+
+      & img{
+        width: 25%;
+        height: var(--thumbnail-heightsm);
+      }
     }
   }
 }

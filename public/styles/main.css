@@ -8,6 +8,7 @@
 :root{
   --thumbnail-width: 100%;
   --thumbnail-height: 200px;
+  --thumbnail-heightsm: 150px;
 
   --max-width: 1200px;
   --border: solid #000000 1px;
