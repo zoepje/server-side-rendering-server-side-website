@@ -1,9 +1,10 @@
 main{
- margin: 2rem; 
+  margin: 2rem;
 }
 
 article{
-  max-width: 800px;
+  width: fit-content;
+  max-width: 750px;
   margin: var(--margin-center);
 
   & h1{
@@ -25,7 +26,7 @@ article{
   }
 
   & .content{
-    width: fit-content;
+    max-width: 700px;
     margin: var(--margin-center);
 
     & .info{
@@ -63,6 +64,7 @@ article{
       & cite{
         font-size: 2rem;
         line-height: var(--line-heigth);
+        max-width: var(--line-length);
       }
     }
 
@@ -82,3 +84,14 @@ article{
   }
 }
 
+@media only screen and (min-width: 700px){
+  main{
+    margin: var(--margin-center);
+  }
+
+  article{
+    & .content{
+      width: fit-content;
+    }
+  }
+}
