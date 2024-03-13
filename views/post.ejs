@@ -15,7 +15,10 @@
     <% } %>
 
     <div class="excerpt">
-      <a href=""><%= post[0].categories %></a>
+      <% if (category[0]) { %>
+        <a href="/categorie/<%= category[0].slug %>"><%- category[0].name %></a>
+      <% } %>
+
       <span class=".date"><%- post[0].date %></span>
       <%- post[0].excerpt.rendered %>
     </div>
