@@ -70,6 +70,7 @@ header{
       display: grid;
       border: 0;
       background: transparent;
+      color: var(--color-dark);
     }
 
     & .search{
