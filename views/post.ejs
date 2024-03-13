@@ -8,8 +8,11 @@
 <main>
   <article>
     <h1><%- post[0].title.rendered %></h1>
-
-    <img src="<%= post[0].jetpack_featured_media_url  %>" alt="">
+    <% if (post[0].jetpack_featured_media_url[0]) { %>
+      <img src="<%= post[0].jetpack_featured_media_url  %>" alt="">
+    <% } else { %>
+      <img src="/assets/errorimg.png" alt="Kan foto niet laden">
+    <% } %>
 
     <div class="excerpt">
       <a href=""><%= post[0].categories %></a>
