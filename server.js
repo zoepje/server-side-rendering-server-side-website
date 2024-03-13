@@ -50,47 +50,48 @@ const categoriesData = [
 // Maak een GET route voor de home
 app.get('/', function (request, response) {
   fetchJson(postsUrl + '?per_page=30').then((posts) => {
+  // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
+  // HTML maken op basis van JSON data
 
     // Voor alle posts
     // Zet de string data uit API om naar een datum die er mooi uit ziet
     for (var i=0; i < posts.length; i++) {
-      const parsedDate = new Date(posts[i].date),
-            day = parsedDate.getDate(),
-            options = {month: "short"},
-            month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
-            newDate = day + ' ' + month;
-      posts[i].date = newDate
+      const parsedDate = new Date(posts[i].date), // Haal de string date van de post op
+            day = parsedDate.getDate(), // Haal de dag uit de string
+            options = {month: "short"}, // De maand moet kort geschreven zijn
+            month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate), // Haal de maand op en zet het in woordvorm in de taal nederlands
+            newDate = day + ' ' + month; // Maak een nieuwe datum met "dag maand"
+      posts[i].date = newDate // Zet waarde van de datum naar de nieuwe datum
     }
-    // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
-    // HTML maken op basis van JSON data
+
     response.render('home', {posts: posts, categories: categoriesData})
   })
 })
 
 // Maak een GET route voor de category
 app.get('/categorie/:slug', function (request, response) {
-  Promise.all([fetchJson(categoriesUrl + '/?slug=' + request.params.slug), fetchJson(postsUrl + '?per_page=100')]).then(([categoryData, postData]) => {
-    // Render category.ejs uit de views map en geef de opgehaalde data mee als variabele
+  // maak const category aan
+  // Vind in de array categoriesData de category.slug die gelijk is aan de request.params.slug
+  const category = categoriesData.find((category) => category.slug == request.params.slug);
+
+  // Doe meerdere fetchJson voor de posts en de categorie data
+  Promise.all([fetchJson(postsUrl + '?categories=' + category.id), fetchJson(categoriesUrl + '/?slug=' + request.params.slug)]).then(([postData, category]) => {
+    // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
-    
-    //Filter de postData zodat hij alleen maar de posts die het zelfde id hebben als deze category
-    let filterData = postData.filter(post => {
-      return post.categories == categoryData[0].id
-    })
 
-    // Voor alle posts die in filterData zitten
-    // Zet de string data uit API om naar een datum die er mooi uit ziet
-    for (var i=0; i < filterData.length; i++) {
-      const parsedDate = new Date(filterData[i].date),
-            day = parsedDate.getDate(),
-            options = {month: "long"},
-            month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
-            year = parsedDate.getFullYear(),
-            newDate = day + ' ' + month + ' ' + year;
-      filterData[i].date = newDate
-    }
+      // Voor alle posts die in postData zitten
+      // Zet de string data uit API om naar een datum die er mooi uit ziet
+      for (var i=0; i < postData.length; i++) {
+        const parsedDate = new Date(postData[i].date), // Haal de string date van de post op
+              day = parsedDate.getDate(), // Haal de dag uit de string
+              options = {month: "long"}, // De maand moet helemaal uitgeschreven zijn
+              month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate), // Haal de maand op en zet het in woordvorm in de taal nederlands
+              year = parsedDate.getFullYear(), // Haal het jaar uit de string
+              newDate = day + ' ' + month + ' ' + year; // Maak een nieuwe datum met "dag maand jaar"
+        postData[i].date = newDate // Zet waarde van de datum naar de nieuwe datum
+      }
 
-    response.render('category', {category: categoryData, categories: categoriesData, posts: filterData})
+    response.render('category', {posts: postData, category: category, categories: categoriesData});
   })
 })
 
@@ -100,22 +101,18 @@ app.get('/post/:slug', function (request, response) {
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
 
-    let filterData = mediaData.filter(media => {
-      return media.id == postData[0].featured_media
-    })
-
-    // Zet de string data uit API om naar een datum die er mooi uit ziet
-    const parsedDate = new Date(postData[0].date),
-      day = parsedDate.getDate(),
-      options = {month: "long"},
-      month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate),
-      year = parsedDate.getFullYear(),
-      hours = (parsedDate.getHours() < 10 ? '0' : ' ') + parsedDate.getHours(),
-      minutes = (parsedDate.getMinutes() < 10 ? '0' : '') + parsedDate.getMinutes(),
-      time = hours + ':' + minutes,
-      newDate = day + ' ' + month + ' ' + year + ' ' + time;
-    postData[0].date = newDate
+      // Zet de string data uit API om naar een datum die er mooi uit ziet
+      const parsedDate = new Date(postData[0].date), // Haal de string date van de post op
+        day = parsedDate.getDate(), // Haal de dag uit de string
+        options = {month: "long"}, // De maand moet helemaal uitgeschreven zijn
+        month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate), // Haal de maand op en zet het in woordvorm in de taal nederlands
+        year = parsedDate.getFullYear(), // Haal het jaar uit de string
+        hours = (parsedDate.getHours() < 10 ? '0' : ' ') + parsedDate.getHours(), // Als getHours() onder 10 is zet geef '0' ander ''. + haal uren uit de string
+        minutes = (parsedDate.getMinutes() < 10 ? '0' : '') + parsedDate.getMinutes(), // Als getMinutes() onder 10 is zet geef '0' ander ''. + haal minuten uit de string
+        time = hours + ':' + minutes, // Maak  een tijd aan "hours:minuten"
+        newDate = day + ' ' + month + ' ' + year + ' ' + time; // Maak een nieuwe datum met "dag maand jaar tijd"
+      postData[0].date = newDate // Zet waarde van de datum naar de nieuwe datum
     
-    response.render('post', {post: postData, media: filterData, categories: categoriesData})
+    response.render('post', {post: postData, categories: categoriesData})
   })
 })
