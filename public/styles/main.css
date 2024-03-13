@@ -6,13 +6,17 @@
 }
 
 :root{
+  --color-dark: #000000;
+  --color-dark-100: #adadad;
+  --color-light: #ffffff;
+
   --thumbnail-width: 100%;
   --thumbnail-height: 200px;
   --thumbnail-heightsm: 150px;
 
   --max-width: 1200px;
-  --border: solid #000000 1px;
-  --border-light: solid #adadad 1px;
+  --border: solid var(--color-dark) 1px;
+  --border-light: solid var(--color-dark-100) 1px;
 
   --margin-center: 0 auto;
   --padding: .5rem;
@@ -26,7 +30,7 @@ body{
 
   & a{
     text-decoration: none;
-    color: #000000;
+    color: var(--color-dark);
   }
 
   & a:hover{
@@ -93,7 +97,7 @@ header.nav-open{
     z-index: 20;
     display: grid;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: var(--color-light);
 
     & ul{
       margin-bottom: 1rem;
@@ -160,8 +164,8 @@ footer{
       display: flex;
       flex-direction: row;
       justify-content: end;
-      background-color: #000000;
-      color: #ffffff;
+      background-color: var(--color-dark);
+      color: var(--color-light);
 
       & li{
         width: fit-content;
@@ -169,7 +173,7 @@ footer{
         list-style: none;
 
         & a{
-          color: #ffffff;
+          color: var(--color-light);
         }
       }
     }

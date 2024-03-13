@@ -3,7 +3,7 @@ h2{
 }
 
 .results{
-  background-color: #ffffff;
+  background-color: var(--color-light);
   border: var(--border);
   margin: var(--margin-center);
   padding: 30px;
