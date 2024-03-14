@@ -26,7 +26,7 @@
     <section class="content">
       <div class="info">
         <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
-        <p>Leestijd: <strong><%= post[0].yoast_head_json.time %> min</strong></p>
+        <p>Leestijd: <strong><%= post[0].yoast_head_json.twitter_misc["Geschatte leestijd"] %></strong></p>
       </div>
 
       <%- post[0].content.rendered %>
