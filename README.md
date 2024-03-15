@@ -63,7 +63,11 @@ Bij het ontwikkelen van deze website heb ik gebruikgemaakt van EJS, CSS, JavaScr
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
-Als je aan deze website wilt werken kun je de reposertory forken.
+Als je aan deze website wilt werken kun je de reposertory forken:
+1. Open deze repository in jouw editor.
+1. Ga naar de terminal en voer het commando `npm install` uit. Hiermee installeer je Express en alle benodigde afhankelijkheden via NPM.
+1. Start de server met het commando `npm start`.
+1. Pas alles naar eigen wens aan.
 
 ## Bronnen
 
