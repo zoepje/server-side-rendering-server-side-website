@@ -58,11 +58,12 @@ Voor dit project heb ik een responsieve startpagina, categoriepagina en artikelw
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
+Bij het ontwikkelen van deze website heb ik gebruikgemaakt van EJS, CSS, JavaScript en Node.js. In mijn EJS-templates heb ik zowel de HTML-structuur als dynamische data uit de API geïntegreerd. Met CSS heb ik de visuele opmaak van de website gemaakt. Met JavaScript heb ik een uitklapbaar menu geïmplementeerd, en met behulp van Node.js haal ik de benodigde data op uit de API. Voor meer details over hoe ik dit specifiek heb gebouwd, kun je terecht in mijn [Wiki](https://github.com/zoepje/server-side-rendering-server-side-website/wiki/3.-Bouwen).
 
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
-
+Als je aan deze website wilt werken kun je de reposertory forken.
 
 ## Bronnen
 
