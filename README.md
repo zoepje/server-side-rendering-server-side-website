@@ -14,7 +14,10 @@ Red pers is een toegankelijk en inclusief opleidingsplatform dat is bedoeld voor
 
 ## Beschrijving
 <!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-Voor dit porject heb ik een responsive Home, categorie en artikel pagina gemaakt. Het is ook dynamisch en haald data uit de Red Pers Wordpress API. Op de homepagina heb je een overzicht van de 30 meest resente artikelen. In het menu kun je een uit 8 hoofdcategorieen kiezen en zodra je hierop klikt ga je naar de categoriepagina waar je een overzicht krijgt van de artikelen in die categorie
+De website is erg nieuw, ze willen graag een beter versie van de website. De website bestaat nu uit elementor en ze willen graag over uit een uitgebreider functionelere versie van de website. De user experience is nog matig en kan verbetert worden. De mobiele versie is ook nog erg vaag. Zij willen graag een website zien die zich niet afhangt van plugins en programma’s als wordpress en elementor
+
+Er zijn verschillende weergave. Waarbij artikelen worden weergeven, maar ook een onderwerp waarbij een fotogalerij wordt weer gegeven. Bij deze sprint is het de bedoeling om vooral te focussen op de artikelen, die het grootste deel van de website onderbouwd. Bij de Scrap Yard pagina kan je alle onderdelen zien van een artikel pagina. Het design mag doorontwikkeld worden. De user experience is voor nu niet goed en duidelijk, dus dat mag verbeterd worden. Bepaalde elementen zijn nog niet helemaal duidelijk.
+
 <!-- Voeg een mooie poster visual toe 📸 -->
 ### Home 📸
 **Desktop**
@@ -46,14 +49,16 @@ Voor dit porject heb ik een responsive Home, categorie en artikel pagina gemaakt
 <img width="400px" alt="Mobile Artikel" src="https://github.com/zoepje/server-side-rendering-server-side-website/assets/144004461/398b3195-f48c-40ea-a141-4daec163669e">
 
 
-
 <!-- Voeg een link toe naar Github Pages 🌐-->
+Je kunt hier de website bezoeken🌐 https://server-side-redpers.onrender.com/
 
 ## Gebruik
 <!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
+Voor dit project heb ik een responsieve startpagina, categoriepagina en artikelweergave ontwikkeld. Deze zijn dynamisch en halen gegevens op uit de Red Pers WordPress API. Op de startpagina wordt een overzicht getoond van de 30 meest recente artikelen. In het menu kun je kiezen uit 8 hoofdcategorieën. Wanneer je op een categorie klikt, wordt je naar de bijbehorende categoriepagina geleid waar je een overzicht vindt van de artikelen binnen die categorie. Door op een artikel te klikken, word je naar de pagina van dat artikel gebracht waar je het volledige artikel kunt lezen.
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
+
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
